@@ -3,6 +3,11 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+Meetup:
+Intro to Meteor.js
+Monday, October 5, 2015
+http://www.meetup.com/BeginnerProgrammers/events/225055870/
+
 Things you may want to cover:
 
 * Ruby version
