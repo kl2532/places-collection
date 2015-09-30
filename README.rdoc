@@ -1,33 +1,7 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The User model has a first name, last name, and email. Each user can have many places in his/her collection to keep track of.
 
-Meetup:
-Intro to Meteor.js
-Monday, October 5, 2015
-http://www.meetup.com/BeginnerProgrammers/events/225055870/
+The Place model has a name, rating, and embeds an address. It belongs to User.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The Address model has a street1, street2, city, state, and zip_code. It is embedded in Place.
