@@ -28,6 +28,12 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (6.0.3)
+      execjs
+      json
+    bootstrap-sass (3.3.5)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     bson (3.2.4)
     builder (3.2.2)
     coffee-rails (4.0.1)
@@ -118,12 +124,13 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.3.5)
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   mongoid (~> 5.0.0)
   rails (= 4.1.8)
-  sass-rails (~> 4.0.3)
+  sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
   turbolinks
   tzinfo-data
