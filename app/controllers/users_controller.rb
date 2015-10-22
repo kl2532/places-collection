@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_filter :require_user, :only => [:create, :new]
+  #attr_accessible :avatar, :avatar_cache
 
   # GET /users
   # GET /users.json
@@ -59,6 +60,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def avatar
+    content = @user.avatar.read
+    if stale?(etag: content, last_modified: @user.updated_at.utc, public: true)
+      send_data content, type: @user.avatar.file.content_type, disposition: "inline"
+      expires_in 0, public: true
     end
   end
 

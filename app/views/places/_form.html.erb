@@ -19,6 +19,14 @@
     <%= f.label :rating %><br>
     <%= f.number_field :rating %>
   </div>
+  <div class="field">
+    <%= f.label :public_place %><br>
+    <% if @place.public_place == false %>
+      <%= f.check_box :public_place, {}, "true", "false" %>
+    <% else %>
+      <%= f.check_box :public_place, {checked: true}, "true", "false" %>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

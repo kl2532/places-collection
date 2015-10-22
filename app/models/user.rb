@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  mount_uploader :image, AvatarUploader
+
   has_many :places
   
   field :first_name, type: String
@@ -9,4 +11,5 @@ class User
   validates :first_name, :presence => { :message => "You must provide a first name."} 
   validates :last_name, :presence => { :message => "You must provide a last name."} 
   validates :email, :presence => { :message => "You must provide an email."} 
+
 end

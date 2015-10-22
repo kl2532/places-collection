@@ -5,4 +5,5 @@ class Place
 
   field :name, type: String
   field :rating, type: Integer
+  field :public_place, type: Boolean
 end

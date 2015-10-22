@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :addresses
   resources :places
-  resources :users
+  resources :users do
+    get :avatar, on: :member
+  end
 
   get "signup" => "users#new", :as => "signup"
   get 'login' => 'sessions#new'

@@ -10,5 +10,14 @@
   <%= @place.rating %>
 </p>
 
+<p>
+  <strong>Public?</strong>
+  <%if @place.public_place %>
+  	<%= "Yes" %>
+  <% else %>
+  	<%= "No" %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>

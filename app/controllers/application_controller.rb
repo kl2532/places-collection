@@ -6,10 +6,12 @@ class ApplicationController < ActionController::Base
   before_filter :require_user
 
   def current_user
+    puts "applicationController"
   	puts session[:user_id]
     if @current_user.nil?
       @current_user = User.find(session[:user_id]) if session[:user_id]
     end
+    @current_user
   end
   helper_method :current_user
   
