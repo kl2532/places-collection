@@ -1,10 +1,21 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_filter :is_public, only: [ :public]
 
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    user = User.find(session[:user_id])
+    puts "hello from places_controller"
+    puts "user"
+    puts @user
+    @places = user.places.all
+    puts "places"
+    puts @places
+    # @places = Place.all
+  end
+
+  def public
   end
 
   # GET /places/1
@@ -15,7 +26,6 @@ class PlacesController < ApplicationController
   # GET /places/new
   def new
     @place = Place.new
-    @user.places << @place
   end
 
   # GET /places/1/edit
@@ -66,6 +76,10 @@ class PlacesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_place
       @place = Place.find(params[:id])
+    end
+
+    def is_public
+      @place = Place.where('public_place', true)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
