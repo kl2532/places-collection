@@ -12,6 +12,7 @@ class PlacesController < ApplicationController
     @places = user.places.all
     puts "places"
     puts @places
+    puts @places.name
     # @places = Place.all
   end
 
@@ -25,7 +26,8 @@ class PlacesController < ApplicationController
 
   # GET /places/new
   def new
-    @place = Place.new
+    #@place = Place.new
+    @place = @current_user.places.build
   end
 
   # GET /places/1/edit
@@ -35,7 +37,9 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
-    @place = Place.new(place_params)
+    puts "**places_controller create"
+    #@place = Place.new(place_params)
+    @place = @current_user.places.build
 
     respond_to do |format|
       if @place.save
@@ -51,6 +55,8 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
+    puts "**places_controller update"
+    puts @place
     respond_to do |format|
       if @place.update(place_params)
         format.html { redirect_to @place, notice: 'Place was successfully updated.' }

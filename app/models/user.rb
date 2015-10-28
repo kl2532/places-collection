@@ -6,7 +6,9 @@ class User
 
   has_many :places
 
-  accepts_nested_attributes_for :places
+  accepts_nested_attributes_for :places,
+    :allow_destroy => true,
+    :reject_if     => :all_blank
 
   attr_accessor :password
   
