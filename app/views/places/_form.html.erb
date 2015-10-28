@@ -1,5 +1,8 @@
-<%= form_for(@place) do |f| %>
-  <% if @place.errors.any? %>
+<% puts "**hello from _form" %>
+<% puts @current_user %>
+<% puts places_path %>
+<%= form_for(@current_user.places.build) do |f| %>
+   <% if @place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
 
@@ -9,25 +12,28 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :public_place %><br>
-    <% if @place.public_place == false %>
-      <%= f.check_box :public_place, {}, "true", "false" %>
-    <% else %>
-      <%= f.check_box :public_place, {checked: true}, "true", "false" %>
     <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <% puts "**_form inside" %>
+  <%= f.fields_for :places do |p| %>
+    <% puts "**_form places" %>
+    <div class="field">
+      <%= p.label :name %><br>
+      <%= p.text_field :name %>
+    </div>
+    <div class="field">
+      <%= p.label :rating %><br>
+      <%= p.number_field :rating %>
+    </div>
+    <div class="field">
+      <%= p.label :public_place %><br>
+      <% if @place.public_place == false %>
+      <%= p.check_box :public_place, {}, "true", "false" %>
+      <% else %>
+      <%= p.check_box :public_place, {checked: true}, "true", "false" %>
+      <% end %>
+    </div>
+    <div class="actions">
+      <%= p.submit "Submit"%>
+    </div>
+  <% end %>
 <% end %>
