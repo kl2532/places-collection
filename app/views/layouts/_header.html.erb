@@ -1,12 +1,12 @@
 <header class="navbar navbar-fixed-top">
   <div class="container">
         <nav>
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to "Home",   places_path %></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   home_path %></li>
-            <% puts "hello?"%>
-            <% puts session[:user_id] == nil%>
             <% if session[:user_id] != nil%>
-              <li>Hello, <%= current_user.first_name%></li>
+              <li class="user">Hello, <%= current_user.first_name%></li>
               <li><%= link_to "Sign out", logout_path %></li>
             <% else %>
               <li><%= link_to "Sign up", signup_path %></li>

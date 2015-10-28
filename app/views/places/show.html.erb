@@ -1,23 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @place.name %>
-</p>
+<h1>
+  <strong><%= @place.name %></strong>
+</h1>
 
-<p>
+<h2>
   <strong>Rating:</strong>
   <%= @place.rating %>
-</p>
+</h2>
 
-<p>
+<h2>
   <strong>Public?</strong>
   <%if @place.public_place %>
   	<%= "Yes" %>
   <% else %>
   	<%= "No" %>
   <% end %>
-</p>
+</h2>
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
