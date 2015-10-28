@@ -24,9 +24,13 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
+    <%= f.label :password, "Password" %><br>
+    <%= f.password_field :password %>
+   </div>
+<!--   <div class="field">
     <%= f.file_field :image %>
-  </div>
+  </div> -->
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit" %>
   </div>
 <% end %>
