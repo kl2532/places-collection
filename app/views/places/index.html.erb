@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Rating</th>
       <th>Public?</th>
+      <th>Address</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -15,12 +16,16 @@
       <tr>
         <td><%= place.name %></td>
         <td><%= place.rating %></td>
-        <% puts "Hola" %>
-        <% puts current_user.first_name %>
         <%if place.public_place %>
           <td><%= "Yes" %></td>
         <% else %>
           <td><%= "No" %></td>
+        <% end %>
+        <% puts place.address %>
+        <%if place.address %>
+          <td><%= place.address.full_address %></td>
+        <% else %>
+          <td><%= "" %></td>
         <% end %>
         <td><%= link_to 'Show', place %></td>
         <td><%= link_to 'Edit', edit_place_path(place) %></td>

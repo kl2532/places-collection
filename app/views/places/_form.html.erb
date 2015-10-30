@@ -1,7 +1,7 @@
 <% puts "**hello from _form" %>
 <% puts @current_user %>
 <% puts places_path %>
-<%= form_for(@current_user.places.build) do |f| %>
+<%= form_for(@place) do |p| %>
    <% if @place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -14,9 +14,7 @@
     </div>
     <% end %>
   <% puts "**_form inside" %>
-  <%= f.fields_for :place do |p| %>
-    <% puts "**_form places" %>
-    <div class="field">
+  <div class="field">
       <%= p.label :name %><br>
       <%= p.text_field :name %>
     </div>
@@ -24,6 +22,29 @@
       <%= p.label :rating %><br>
       <%= p.number_field :rating %>
     </div>
+    <%= p.fields_for :address  do |a| %>
+    <% puts "**_form address" %>
+    <div class="field">
+      <%= a.label :street1 %><br>
+      <%= a.text_field :street1 %>
+    </div>
+    <div class="field">
+      <%= a.label :street2 %><br>
+      <%= a.text_field :street2 %>
+    </div>
+    <div class="field">
+      <%= a.label :city %><br>
+      <%= a.text_field :city %>
+    </div>
+    <div class="field">
+      <%= a.label :state %><br>
+      <%= a.text_field :state %>
+    </div>
+    <div class="field">
+      <%= a.label :zip_code %><br>
+      <%= a.text_field :zip_code %>
+    </div>
+    <% end %>
     <div class="field">
       <%= p.label :public_place %><br>
       <% if @place.public_place == false %>
@@ -35,5 +56,4 @@
     <div class="actions">
       <%= p.submit "Submit"%>
     </div>
-  <% end %>
 <% end %>

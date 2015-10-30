@@ -18,5 +18,14 @@
   <% end %>
 </h2>
 
+<h2>
+  <strong>Address:</strong>
+  <%if @place.address %>
+    <%= @place.address.full_address %>
+  <% else %>
+    <%= "N/A" %>
+  <% end %>
+</h2>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>

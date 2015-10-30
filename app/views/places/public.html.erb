@@ -1,0 +1,22 @@
+<h1>Places:</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.name %></td>
+        <td><%= place.rating %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

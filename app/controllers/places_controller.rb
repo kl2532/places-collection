@@ -26,8 +26,10 @@ class PlacesController < ApplicationController
 
   # GET /places/new
   def new
-    #@place = Place.new
-    @place = @current_user.places.build
+    @place = Place.new
+    puts "**places_controller new"
+    #@place = @current_user.places.build
+    @place.build_address
   end
 
   # GET /places/1/edit
@@ -38,10 +40,13 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     puts "**places_controller create"
+    @place = Place.create(place_params)
+    @place.user = current_user
     #@place = Place.new(place_params)
-    @place = @current_user.places.build
+    #@place = @current_user.places.build
 
     respond_to do |format|
+      puts "**places_controller create-inside"
       if @place.save
         format.html { redirect_to @place, notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
@@ -90,6 +95,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :rating, :public_place)
+      params.require(:place).permit(:name, :rating, :public_place, address_attributes: [:street1, :street2, :city, :state, :zip_code])
     end
 end
