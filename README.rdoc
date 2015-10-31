@@ -1,7 +1,5 @@
 == README
 
-The User model has a first name, last name, and email. Each user can have many places in his/her collection to keep track of.
-
-The Place model has a name, rating, and embeds an address. It belongs to User.
-
-The Address model has a street1, street2, city, state, and zip_code. It is embedded in Place.
+Additional Features:
+#6. Can add LinkedIn and GitHub links to user profile.
+#7. Used Bootstrap
