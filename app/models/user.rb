@@ -5,6 +5,7 @@ class User
   mount_uploader :image, AvatarUploader
 
   has_many :places
+  has_many :public_lists
 
   accepts_nested_attributes_for :places,
     :allow_destroy => true,

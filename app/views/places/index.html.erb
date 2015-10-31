@@ -5,7 +5,6 @@
     <tr>
       <th>Name</th>
       <th>Rating</th>
-      <th>Public?</th>
       <th>Address</th>
       <th colspan="4"></th>
     </tr>
@@ -16,12 +15,6 @@
       <tr>
         <td><%= place.name %></td>
         <td><%= place.rating %></td>
-        <%if place.public_place %>
-          <td><%= "Yes" %></td>
-        <% else %>
-          <td><%= "No" %></td>
-        <% end %>
-        <% puts place.address %>
         <%if place.address %>
           <td><%= place.address.full_address %></td>
         <% else %>

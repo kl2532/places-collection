@@ -5,7 +5,10 @@ class PublicListsController < ApplicationController
   # GET /public_lists
   # GET /public_lists.json
   def index
-    @public_lists = PublicList.all
+    #@public_lists = PublicList.all
+
+    user = User.find(session[:user_id])
+    @public_lists = user.public_lists.all
   end
 
   # GET /public_lists/1
