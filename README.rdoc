@@ -1,5 +1,7 @@
 == README
 
 Additional Features:
+
 #6. Can add LinkedIn and GitHub links to user profile.
+
 #7. Used Bootstrap
