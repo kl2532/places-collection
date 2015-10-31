@@ -5,13 +5,7 @@ class PlacesController < ApplicationController
   # GET /places.json
   def index
     user = User.find(session[:user_id])
-    puts "hello from places_controller"
-    puts "user"
-    puts @user
     @places = user.places.all
-    puts "places"
-    puts @places
-    puts @places.name
     # @places = Place.all
   end
 
@@ -86,10 +80,6 @@ class PlacesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_place
       @place = Place.find(params[:id])
-    end
-
-    def is_public
-      @place = Place.where('public_place', true)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
