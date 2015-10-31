@@ -10,15 +10,6 @@
 </h2>
 
 <h2>
-  <strong>Public?</strong>
-  <%if @place.public_place %>
-  	<%= "Yes" %>
-  <% else %>
-  	<%= "No" %>
-  <% end %>
-</h2>
-
-<h2>
   <strong>Address:</strong>
   <%if @place.address %>
     <%= @place.address.full_address %>
@@ -27,5 +18,7 @@
   <% end %>
 </h2>
 
+<% if session[:user_id] != nil%>
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
+<% end %>

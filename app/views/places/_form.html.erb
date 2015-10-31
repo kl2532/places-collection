@@ -45,14 +45,7 @@
       <%= a.text_field :zip_code %>
     </div>
     <% end %>
-    <div class="field">
-      <%= p.label :public_place %><br>
-      <% if @place.public_place == false %>
-      <%= p.check_box :public_place, {}, "true", "false" %>
-      <% else %>
-      <%= p.check_box :public_place, {checked: true}, "true", "false" %>
-      <% end %>
-    </div>
+    <br>
     <div class="actions">
       <%= p.submit "Submit"%>
     </div>

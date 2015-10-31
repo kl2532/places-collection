@@ -2,7 +2,7 @@ class Place
   include Mongoid::Document
   embeds_one :address
   belongs_to :user
-  belongs_to :public_lists
+  has_and_belongs_to_many :public_lists
 
   validates_associated :address
 

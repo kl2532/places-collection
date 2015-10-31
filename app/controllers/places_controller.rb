@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :require_user, :only => [:show]
 
   # GET /places
   # GET /places.json
@@ -84,6 +85,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :rating, :public_place, address_attributes: [:street1, :street2, :city, :state, :zip_code])
+      params.require(:place).permit(:name, :rating, :public_place, address_attributes: [:id, :street1, :street2, :city, :state, :zip_code])
     end
 end

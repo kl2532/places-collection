@@ -1,7 +1,7 @@
 class PublicList
   include Mongoid::Document
   belongs_to :user
-  has_many :places
+  has_and_belongs_to_many :places
 
   field :name, type: String
   field :description, type: String

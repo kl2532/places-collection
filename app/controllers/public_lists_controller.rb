@@ -27,7 +27,17 @@ class PublicListsController < ApplicationController
   def create
     @public_list = PublicList.new(public_list_params)
     @public_list.user = current_user
-
+    puts "** public_list CREATE"
+    puts params[:place_ids]
+    puts "iterating..."
+    for p_id in params[:place_ids]
+      puts p_id
+      puts "finding..."
+      @p = Place.find(p_id)
+      puts "&&&"
+      puts @p
+      @public_list.places << Place.find(p_id)
+    end
     respond_to do |format|
       if @public_list.save
         format.html { redirect_to @public_list, notice: 'Public list was successfully created.' }
@@ -44,6 +54,15 @@ class PublicListsController < ApplicationController
   def update
     respond_to do |format|
       if @public_list.update(public_list_params)
+        #@public_list.places = PublicList.find(params[:place_ids])
+        for p_id in params[:place_ids]
+      puts p_id
+      puts "finding..."
+      @p = Place.find(p_id)
+      puts "&&&"
+      puts @p
+      @public_list.places << Place.find(p_id)
+    end
         format.html { redirect_to @public_list, notice: 'Public list was successfully updated.' }
         format.json { render :show, status: :ok, location: @public_list }
       else
@@ -71,6 +90,6 @@ class PublicListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def public_list_params
-      params.require(:public_list).permit(:name, :description)
+      params.require(:public_list).permit(:name, :description, places_attributes: [])
     end
 end

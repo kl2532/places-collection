@@ -1,12 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @public_list.name %>
-</p>
+</h1>
 
 <p>
-  <strong>Description:</strong>
   <%= @public_list.description %>
 </p>
 
@@ -24,8 +22,10 @@
   	<% puts "**public_lists show" %>
   	<%puts @public_list.place_ids %>
   	<% puts "**public_lists show END----" %>
-    <% @public_list.place_ids.each do |place| %>
+    <% @public_list.places.each do |place| %>
       <tr>
+        <% puts "**SHOWing" %>
+        <% puts place %>
         <td><%= place.name %></td>
         <td><%= place.rating %></td>
         <% puts place.address %>
@@ -34,9 +34,10 @@
         <% else %>
           <td><%= "" %></td>
         <% end %>
+        <% if session[:user_id] != nil%>
         <td><%= link_to 'Show', place %></td>
         <td><%= link_to 'Edit', edit_place_path(place) %></td>
-        <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
