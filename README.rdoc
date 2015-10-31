@@ -2,6 +2,8 @@
 
 Additional Features:
 
+#5. Users can change their password when editing profile.
+
 #6. Can add LinkedIn and GitHub links to user profile.
 
 #7. Used Bootstrap
