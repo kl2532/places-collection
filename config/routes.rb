@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  resources :public_lists
+
   resources :addresses
   resources :places
   resources :users do

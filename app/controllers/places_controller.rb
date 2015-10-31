@@ -1,6 +1,5 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  before_filter :is_public, only: [ :public]
 
   # GET /places
   # GET /places.json

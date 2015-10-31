@@ -2,6 +2,7 @@ class Place
   include Mongoid::Document
   embeds_one :address
   belongs_to :user
+  belongs_to :public_lists
 
   validates_associated :address
 
@@ -13,6 +14,4 @@ class Place
 
   validates :name, :presence => { :message => "You must provide a name."} 
   validates :rating, :presence => { :message => "You must provide a rating."} 
-
-  validates_associated :address
 end

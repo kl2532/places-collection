@@ -1,0 +1,27 @@
+<h1>Your Public Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @public_lists.each do |public_list| %>
+      <tr>
+        <td><%= public_list.name %></td>
+        <td><%= public_list.description %></td>
+        <td><%= link_to 'Show', public_list %></td>
+        <td><%= link_to 'Edit', edit_public_list_path(public_list) %></td>
+        <td><%= link_to 'Destroy', public_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '+ New Public list', new_public_list_path %>

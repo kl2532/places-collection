@@ -1,26 +1,33 @@
-<h1>Your Places:</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @public_list.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @public_list.description %>
+</p>
 
 <table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Rating</th>
-      <th>Public?</th>
       <th>Address</th>
       <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @places.each do |place| %>
+  	<% puts "**public_lists show" %>
+  	<%puts @public_list.place_ids %>
+  	<% puts "**public_lists show END----" %>
+    <% @public_list.place_ids.each do |place| %>
       <tr>
         <td><%= place.name %></td>
         <td><%= place.rating %></td>
-        <%if place.public_place %>
-          <td><%= "Yes" %></td>
-        <% else %>
-          <td><%= "No" %></td>
-        <% end %>
         <% puts place.address %>
         <%if place.address %>
           <td><%= place.address.full_address %></td>
@@ -35,11 +42,7 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to '+ Add a Place', new_place_path %>
-<br>
-<%= link_to '+ Add a Public List', new_public_list_path %>
-
-<br>
-<%= link_to 'View Public Lists', public_lists_path %>
+<% if session[:user_id] != nil%>
+  <%= link_to 'Edit', edit_public_list_path(@public_list) %> |
+  <%= link_to 'Back', public_lists_path %>
+<% end %>

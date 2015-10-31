@@ -25,7 +25,7 @@ class User
 
   validates_associated :places
 
-  def self.authenticate(email, password)
+  def authenticate(email, password)
     if password_correct?(email, password)
       true
     else
@@ -33,7 +33,7 @@ class User
     end
   end
   
-  def self.password_correct?(user_email, password)
+  def password_correct?(user_email, password)
     user = find_by_email user_email
     return if user.nil?
     user_pass = Password.new(user.password_hash)
@@ -41,9 +41,7 @@ class User
   end
 
   protected
-  
     def encrypt_password
       self.password_hash = Password.create(@password)
     end
-
-end
+  end
