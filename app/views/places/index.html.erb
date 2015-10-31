@@ -33,6 +33,8 @@
 <%= link_to '+ Add a Place', new_place_path %>
 <br>
 <br>
-<h3><%= link_to 'View Public Lists', public_lists_path %></h3>
-<br>
-<%= link_to '+ Add a Public List', new_public_list_path %>
+<% if !@places.empty? %>
+  <h3><%= link_to 'View Public Lists', public_lists_path %></h3>
+  <br>
+  <%= link_to '+ Add a Public List', new_public_list_path %>
+<% end %>
