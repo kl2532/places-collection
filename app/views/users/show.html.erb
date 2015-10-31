@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<h2>
+  <%= @user.first_name %> <%= @user.last_name %>
+</h2>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
+<h2>
   <%= @user.email %>
-</p>
+</h2>
+<% if !@user.linked_in.blank?%>
+	<a href= <%=url_with_protocol(@user.linked_in)%> ><i class='fa fa-linkedin  fa-4x'></i></a>
+<% end %>
+<p>
+<% if !@user.github.blank?%>
+	<a href=<%=url_with_protocol(@user.github)%>><i class='fa fa-github  fa-4x'></i></a>
+<% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<br>
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+<!--%= link_to 'Back', users_path %-->

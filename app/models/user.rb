@@ -15,6 +15,8 @@ class User
   field :first_name, type: String
   field :last_name, type: String
   field :email, type: String
+  field :linked_in, type: String
+  field :github, type: String
   field :password_hash, :type => String
 
   before_save :encrypt_password
